@@ -23,6 +23,7 @@ module.exports = {
       aqua: "#00ccd9",
       "aqua-opacity": "#CCF5F7",
       "dirty-white": "#F8F8F8",
+      error: "#C83225"
     },
     spacing: {
       hideMenu: "-425px",

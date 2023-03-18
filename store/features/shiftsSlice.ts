@@ -1,35 +1,37 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { shiftApi } from "../../api";
-import { IModals } from "../../interfaces";
 import { RootState } from "../store";
 
 export type ShiftsState = {
   shiftsToCancel: any;
   status: string;
-  error: string | undefined;
-  isSuccess: boolean
+  error: boolean;
+  isSuccess: boolean;
 };
 
 const initialState: ShiftsState = {
   shiftsToCancel: [],
   status: "idle",
-  error: "",
-  isSuccess: false
+  error: false,
+  isSuccess: false,
 };
 
-export const fetchShifts = createAsyncThunk("shifts/fetchshifts", async (email?: string) => {
-  console.log(email)
-  const {data} = await shiftApi.get(`/${email}`);
-  return data;
-});
+export const fetchShifts = createAsyncThunk(
+  "shifts/fetchshifts",
+  async (email?: string) => {
+    /* const { data } = await shiftApi.get(`/${email}`); */
+    const { data } = await axios.get(`https://pickleball-api.onrender.com/shifts/${email}`)
+    return data;
+  }
+);
 
 export const shiftsSlice = createSlice({
   name: "shifts",
   initialState,
   reducers: {
     setShiftSuccess: (state, action: PayloadAction<boolean>) => {
-      state.isSuccess = action.payload
+      state.isSuccess = action.payload;
     },
   },
   extraReducers(builder) {
@@ -43,7 +45,7 @@ export const shiftsSlice = createSlice({
       })
       .addCase(fetchShifts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = true
       });
   },
 });

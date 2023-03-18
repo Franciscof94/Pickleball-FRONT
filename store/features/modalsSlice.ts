@@ -24,7 +24,6 @@ export const modalsSlice = createSlice({
   initialState,
   reducers: {
     setShowModals: (state, action: PayloadAction<IModals>) => {
-      console.log("ACA",action.payload.name, action.payload.isOpen)
       state.modals[action.payload.name as keyof typeModal] = action.payload.isOpen
     },
   },

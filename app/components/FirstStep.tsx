@@ -14,6 +14,7 @@ import useWindowDimensions from "../../hooks/useResize";
 import { setTimeToCalendar } from "../utils/setTime";
 import { setDate } from "../utils/setDate";
 import { IShift } from "../../interfaces";
+import moment from "moment";
 
 interface Props {
   onNextClick: () => void;
@@ -81,7 +82,7 @@ export const FirstStep: FC<Props> = ({ onNextClick, allShifts }) => {
                 inline
 
                 showTimeSelect
-            
+                minDate={moment().toDate()}
                 filterTime={filterPassedTime}
                 includeTimes={times}
                 excludeTimes={getExcludeTimesForDate(startDate)}

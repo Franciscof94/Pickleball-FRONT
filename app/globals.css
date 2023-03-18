@@ -222,14 +222,14 @@ a {
 /* STEP  */
 
 .carousel-indicators .active {
-    background-color: var(--step-enabled) !important;
+    background-color: #003941 !important;
     width: 12px !important;
     height: 12px !important;
     border-radius: 50% !important;
 }
 
 .carousel-indicators [data-bs-target] {
-    background-color: var(--step-disabled) !important;
+    background-color: #7c999c !important;
     width: 12px !important;
     height: 12px !important;
     border-radius: 50% !important;

@@ -8,7 +8,6 @@ import { customStyles } from "./CustomStyles";
 import { outfit } from "../../home-page";
 import { deleteShift } from "../../../services/DELETE/deleteShift";
 import { setDate } from "../../utils/setDate";
-import { fetchShifts } from "../../../store/features/shiftsSlice";
 
 interface Props {
   isOpen: boolean;
