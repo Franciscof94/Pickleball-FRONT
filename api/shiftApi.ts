@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const shiftApi = axios.create({
-    baseURL: process.env.SHIFT_API,
+    baseURL: process.env.API_SHIFT,
 });
 
 export default shiftApi;
