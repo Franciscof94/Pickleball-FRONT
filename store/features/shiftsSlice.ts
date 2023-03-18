@@ -20,8 +20,7 @@ const initialState: ShiftsState = {
 export const fetchShifts = createAsyncThunk(
   "shifts/fetchshifts",
   async (email?: string) => {
-    /* const { data } = await shiftApi.get(`/${email}`); */
-    const { data } = await axios.get(`https://pickleball-api.onrender.com/shifts/${email}`)
+    const { data } = await shiftApi.get(`/${email}`);
     return data;
   }
 );
