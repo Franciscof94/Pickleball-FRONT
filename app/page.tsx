@@ -1,7 +1,7 @@
 import HomePage from "./home-page";
 
 async function getShifts() {
-  const res = await fetch("http://localhost:4002/shifts", {
+  const res = await fetch(`${process.env.API_URL}`, {
     cache: "no-store",
   });
   const shifts = await res.json();
