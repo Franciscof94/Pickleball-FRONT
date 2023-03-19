@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { fetchShifts, getShifts } from "../../store/features/shiftsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { outfit } from "../home-page";
 import { CustomButton } from "./buttons/CustomButton";
 import { CustombuttonSpinner } from "./buttons/CustomButtonSpinner";
 import { CustomInput } from "./inputs/CustomInput";
@@ -14,7 +15,7 @@ interface Props {
 
 export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
   const { watch } = useFormContext();
-  const[showAlert, setShowAlert] = useState(false)
+  const [showAlert, setShowAlert] = useState(false);
   const dispatch = useAppDispatch();
   const { status, error, shiftsToCancel } = useAppSelector(getShifts);
   const name = watch("name");
@@ -23,7 +24,7 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
 
   const handleClick = async () => {
     const { payload } = await dispatch(fetchShifts(email));
-    setShowAlert(true)
+    setShowAlert(true);
     if (payload?.length) {
       onNextClick();
     }
@@ -62,14 +63,25 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
               label="Email"
               margin="md:ml-[5px] lg:ml-[5px]"
             />
-          
           </div>
-          
+
           <div className="flex flex-column items-center mt-[118px]">
-          <div className="pb-3">
-          {showAlert && !shiftsToCancel?.length && !error && <small className="text-error font-bold">There are no shifts available with the email entered.</small>}
-            {!shiftsToCancel?.length && error && <small className="text-error font-bold">An unexpected error has occurred.</small>}
-          </div>
+            <div className="pb-3">
+              {showAlert && !shiftsToCancel?.length && !error && (
+                <small
+                  className={`text-sm lg:text-xl md:text-xl text-error font-bold ${outfit.className}`}
+                >
+                  There are no shifts available with the email entered.
+                </small>
+              )}
+              {!shiftsToCancel?.length && error && (
+                <small
+                  className={`text-sm lg:text-xl md:text-xl text-error font-bold ${outfit.className}`}
+                >
+                  An unexpected error has occurred.
+                </small>
+              )}
+            </div>
             {status === "loading" ? (
               <CustombuttonSpinner />
             ) : (

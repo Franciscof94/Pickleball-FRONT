@@ -63,7 +63,7 @@ export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
               />
               
             </div>
-            <div className="flex flex-column items-center mt-[118px]">
+            <div className="flex flex-column items-center mt-[95px]">
             {width!! < 768 && <YouChose padding="pb-5">{setDate(dateAndTime)}</YouChose>}
               <CustomButton
                 width="w-[356px]"

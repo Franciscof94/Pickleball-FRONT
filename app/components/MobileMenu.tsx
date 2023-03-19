@@ -40,14 +40,13 @@ export const MobileMenu: FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
                     } 
                     ${audiowide.className}`}
     >
-      <li className="py-1">
-        <Link
-          href="/"
-          className="text-blue text-sm text-base "
-          onClick={() => {
-            setIsOpenMenu(false);
-          }}
-        >
+      <li
+        className="py-1"
+        onClick={() => {
+          setIsOpenMenu(false);
+        }}
+      >
+        <Link href="/" className="text-blue text-sm text-base ">
           Book a lesson
         </Link>
       </li>
@@ -61,14 +60,13 @@ export const MobileMenu: FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
           Blog
         </Link>
       </li>
-      <li className="py-1">
-        <Link
-          href="/cancel-booking"
-          className="text-blue text-sm text-base"
-          onClick={() => {
-            setIsOpenMenu(false);
-          }}
-        >
+      <li
+        className="py-1"
+        onClick={() => {
+          setIsOpenMenu(false);
+        }}
+      >
+        <Link href="/cancel-booking" className="text-blue text-sm text-base">
           Cancel a booking
         </Link>
       </li>

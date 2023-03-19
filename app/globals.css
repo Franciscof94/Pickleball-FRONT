@@ -72,12 +72,12 @@ a {
 
 .react-datepicker__navigation--previous {
     left: 20px !important;
-    top: 22px !important;
+    top: 14px !important;
 }
 
 .react-datepicker__navigation--next {
     right: 25px !important;
-    top: 22px !important;
+    top: 14px !important;
 }
 
 .react-datepicker__time-container .react-datepicker__time {
