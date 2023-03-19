@@ -36,7 +36,7 @@ export const SecondCancelStep: FC<Props> = ({ onNextClick }) => {
                     <div className="grid justify-items-center pt-6">
                         <YourReservations />
                     </div>
-                    <div className="flex flex-column items-center pt-[230px] lg:pt-[92px] md:pt-[92px]">
+                    <div className="flex flex-column items-center pt-[238px] lg:pt-[92px] md:pt-[92px]">
                         <CustomButton
                             onClick={handleOpenModal}
                             width="w-[356px]"
