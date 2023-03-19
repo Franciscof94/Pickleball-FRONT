@@ -340,7 +340,7 @@ input[type="submit"i]:disabled {
   }
 
   .react-datepicker__time-list-item {
-    margin-bottom: 5px !important;
+    margin-bottom: 12px !important;
   }
 
   .react-datepicker__time-container
