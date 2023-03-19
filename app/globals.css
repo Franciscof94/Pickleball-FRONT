@@ -339,6 +339,18 @@ input[type="submit"i]:disabled {
     margin-top: 15px !important;
   }
 
+  .react-datepicker__time-list-item {
+    margin-bottom: 2px !important;
+  }
+
+  .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list {
+    height: 100px !important;
+    overflow-y: auto !important;
+  }
+
   .react-datepicker__time-container
     .react-datepicker__time
     .react-datepicker__time-box
@@ -358,10 +370,10 @@ input[type="submit"i]:disabled {
   }
 
   .react-datepicker__navigation--previous {
-    top: 14px !important;
+    top: 22px !important;
   }
   .react-datepicker__navigation--next {
-    top: 14px !important;
+    top: 22px !important;
   }
 
   .react-datepicker {
