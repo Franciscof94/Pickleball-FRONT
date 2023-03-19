@@ -18,8 +18,8 @@ export const Menu = () => {
           Book a lesson
         </Link>
       </li>
-      <li className="mr-6" className="text-white">About me</li>
-      <li className="mr-6" className="text-white">Blog</li>
+      <li className="mr-6 text-white" >About me</li>
+      <li className="mr-6 text-white" >Blog</li>
       <li className="mr-6">
         <Link
           href="/cancel-booking"
