@@ -24,7 +24,6 @@ export const database = [
       hour: "14:30",
       name: "tue",
     },
-
     {
       id: 10,
       hour: "13:30",
@@ -41,12 +40,12 @@ export const database = [
       name: "mon",
     },
     {
-      id: 15,
+      id: 18,
       hour: "19:30",
       name: "mon",
     },
     {
-      id: 15,
+      id: 29,
       hour: "19:30",
       name: "wed",
     },

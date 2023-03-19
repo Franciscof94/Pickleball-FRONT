@@ -12,7 +12,7 @@ export const StepTitle: FC<Props> = ({ children }) => {
     const { stepNumber } = useAppSelector(selectUi)
 
     return (
-        <div className="text-[24px] flex justify-center md:pt-7 lg:ml-[-15px] md:ml-[-15px] lg:pt-7 pb-[30px]">
+        <div className="text-[24px] flex justify-center md:pt-7 lg:ml-[-15px] md:ml-[-15px] lg:pt-7 pb-[10px]">
             <div className="flex justify-center md:justify-start lg:justify-start md:max-w-[715px] lg:max-w-[880px] w-full">
                 <div className="flex items-center t">
                     <StepNumber>
