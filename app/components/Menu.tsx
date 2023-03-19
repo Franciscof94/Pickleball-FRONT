@@ -18,8 +18,8 @@ export const Menu = () => {
           Book a lesson
         </Link>
       </li>
-      <li className="mr-6">About me</li>
-      <li className="mr-6">Blog</li>
+      <li className="mr-6" className="text-white">About me</li>
+      <li className="mr-6" className="text-white">Blog</li>
       <li className="mr-6">
         <Link
           href="/cancel-booking"
@@ -31,7 +31,7 @@ export const Menu = () => {
           Cancel a booking
         </Link>
       </li>
-      <li>FAQs</li>
+      <li className="text-white">FAQs</li>
     </ul>
   );
 };
