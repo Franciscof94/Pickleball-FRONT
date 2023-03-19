@@ -63,7 +63,7 @@ export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
                 margin="md:ml-[5px] lg:ml-[5px]"
               />
             </div>
-            <div className="flex flex-column items-center mt-[65px] lg:mt-[95px] md:mt-[95px]">
+            <div className="flex flex-column items-center mt-[60px] lg:mt-[95px] md:mt-[95px]">
               {width!! < 768 && (
                 <YouChose padding="pb-5">{setDate(dateAndTime)}</YouChose>
               )}

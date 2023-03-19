@@ -31,7 +31,7 @@ export const ThirdStep: FC<Props> = ({ onPrevClick }) => {
 
   return (
     <div className="max-w-[855px] mx-auto min-h-[533px] bg-blue">
-      <div className="grid justify-items-center pt-9">
+      <div className="grid justify-items-center pt-5">
         <TitleFinish>Awesome! your spot is reserved. </TitleFinish>
         <div className="pt-8 pb-6">
           <Image src={Tick} width={105} alt="tick" />
