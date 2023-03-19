@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import { outfit } from "../home-page";
+import { outfit } from "../page";
 import { useFormContext, Controller } from "react-hook-form";
 import { useAppSelector } from "../../store/hooks";
 import { getShifts } from "../../store/features/shiftsSlice";

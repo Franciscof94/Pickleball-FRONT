@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { outfit } from "../home-page"
+import { outfit } from "../page"
 
 interface Props {
     children: React.ReactNode,

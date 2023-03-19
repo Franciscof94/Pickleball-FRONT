@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { useFormContext } from 'react-hook-form';
-import { audiowide } from "../../home-page"
+import { audiowide } from "../../page"
 
 
 interface Props {

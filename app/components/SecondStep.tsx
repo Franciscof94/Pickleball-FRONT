@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form";
 import useWindowDimensions from "../../hooks/useResize";
 import { getShifts } from "../../store/features/shiftsSlice";
 import { useAppSelector } from "../../store/hooks";
-import { outfit } from "../home-page";
+import { outfit } from "../page";
 import { setDate } from "../utils/setDate";
 import { CustomButton } from "./buttons/CustomButton";
 import { CustombuttonSpinner } from "./buttons/CustomButtonSpinner";

@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { audiowide } from "../home-page"
+import { audiowide } from "../page"
 
 
 interface Props {

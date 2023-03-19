@@ -1,4 +1,4 @@
-import { outfit } from "../../home-page";
+import { outfit } from "../../page";
 
 export const CustombuttonSpinner = () => {
   return (

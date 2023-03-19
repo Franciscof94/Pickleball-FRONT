@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { fetchShifts, getShifts } from "../../store/features/shiftsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { outfit } from "../home-page";
+import { outfit } from "../page";
 import { CustomButton } from "./buttons/CustomButton";
 import { CustombuttonSpinner } from "./buttons/CustomButtonSpinner";
 import { CustomInput } from "./inputs/CustomInput";

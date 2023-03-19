@@ -1,4 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  isRejectedWithValue,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import axios from "axios";
 import { shiftApi } from "../../api";
 import { IShift } from "../../interfaces";
@@ -6,31 +11,54 @@ import { RootState } from "../store";
 
 export type ShiftsState = {
   shiftsToCancel: IShift[];
-  status: string;
+  allShifts: IShift[];
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: boolean;
   isSuccess: boolean;
 };
 
 const initialState: ShiftsState = {
   shiftsToCancel: [],
+  allShifts: [],
   status: "idle",
   error: false,
   isSuccess: false,
 };
 
-export const fetchShifts = createAsyncThunk(
-  "shifts/fetchShifts",
+export const fetchAllShifts = createAsyncThunk(
+  "shifts/fetchAllShifts",
+  async () => {
+    try {
+      const { data } = await shiftApi.get("/");
+      console.log(shiftApi)
+      return data;
+    } catch (err: any) {
+      return isRejectedWithValue(err.response.data);
+    }
+  }
+);
+
+export const fetchShiftByUser = createAsyncThunk(
+  "shifts/fetchShiftByUser",
   async (email?: string) => {
-    const { data } = await shiftApi.get(`/${email}`);
-    return data;
+    try {
+      const { data } = await shiftApi.get(`/${email}`);
+      return data;
+    } catch (err: any) {
+      return isRejectedWithValue(err.response.data);
+    }
   }
 );
 
 export const postShifts = createAsyncThunk(
   "shifts/postShifts",
   async (shift: IShift) => {
-    const { data } = await shiftApi.post("/", shift);
-    return data;
+    try {
+      const { data } = await shiftApi.post("/", shift);
+      return data;
+    } catch (err: any) {
+      return isRejectedWithValue(err.response.data);
+    }
   }
 );
 
@@ -44,14 +72,25 @@ export const shiftsSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchShifts.pending, (state, action) => {
+      .addCase(fetchShiftByUser.pending, (state, action) => {
         state.status = "loading";
       })
-      .addCase(fetchShifts.fulfilled, (state, action) => {
+      .addCase(fetchShiftByUser.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.shiftsToCancel = action.payload;
       })
-      .addCase(fetchShifts.rejected, (state, action) => {
+      .addCase(fetchShiftByUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = true;
+      })
+      .addCase(fetchAllShifts.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAllShifts.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.allShifts = action.payload;
+      })
+      .addCase(fetchAllShifts.rejected, (state, action) => {
         state.status = "failed";
         state.error = true;
       })

@@ -1,6 +1,6 @@
 import { BsWhatsapp, BsInstagram } from 'react-icons/bs'
 import { GrFacebookOption } from 'react-icons/gr'
-import { outfit } from '../home-page'
+import { outfit } from '../page'
 
 
 export const Footer = () => {

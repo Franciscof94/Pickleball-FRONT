@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { audiowide } from "../home-page";
+import { audiowide } from "../page";
 
 export const Menu = () => {
   const router = useRouter();

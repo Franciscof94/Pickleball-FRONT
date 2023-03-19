@@ -1,5 +1,5 @@
 import { BannerImage } from "../assets"
-import { audiowide, outfit } from "../home-page"
+import { audiowide, outfit } from "../page"
 
 import { CustomButton } from "./buttons/CustomButton"
 
