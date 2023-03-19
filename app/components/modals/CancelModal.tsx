@@ -11,7 +11,7 @@ import { setDate } from "../../utils/setDate";
 
 interface Props {
   isOpen: boolean;
-  onNextClick: any;
+  onNextClick: () => void;
 }
 
 export const CancelModal: FC<Props> = ({ isOpen, onNextClick }) => {

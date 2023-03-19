@@ -8,12 +8,10 @@ import { FirstCancelStep } from './FirstCancelStep';
 import { SecondCancelStep } from './SecondCancelStep';
 import { ThirdCancelStep } from './ThirdCancelStep';
 
-interface Props {
-    onHandleSubmit: (data: any) => void
-}
 
 
-export const StepCancelContainer: FC<Props> = ({ onHandleSubmit }) => {
+
+export const StepCancelContainer = () => {
     const dispatch = useAppDispatch()
     const ref = useRef<any>(null);
     const { stepNumber } = useAppSelector(selectUi)
@@ -58,7 +56,7 @@ export const StepCancelContainer: FC<Props> = ({ onHandleSubmit }) => {
                         exit={{ y: -1, opacity: 0 }}
                         transition={{ duration: 2.5 }}
                     >
-                        <SecondCancelStep onNextClick={onNextClick} onPrevClick={onPrevClick} onHandleSubmit={onHandleSubmit} />
+                        <SecondCancelStep onNextClick={onNextClick}   />
                     </motion.div>
                 </Carousel.Item>
                 <Carousel.Item>

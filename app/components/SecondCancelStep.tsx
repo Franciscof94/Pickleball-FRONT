@@ -9,11 +9,9 @@ import { CancelModal } from "./modals/CancelModal";
 
 interface Props {
     onNextClick: () => void,
-    onPrevClick: () => void,
-    onHandleSubmit: (data: any) => void
 }
 
-export const SecondCancelStep: FC<Props> = ({ onNextClick, onPrevClick, onHandleSubmit }) => {
+export const SecondCancelStep: FC<Props> = ({ onNextClick }) => {
     const dispatch = useAppDispatch()
     const { watch } = useFormContext()
     const shiftCancel = watch('shiftCancel')

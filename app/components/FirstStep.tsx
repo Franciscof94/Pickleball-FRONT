@@ -25,18 +25,18 @@ interface Props {
 export const FirstStep: FC<Props> = ({ onNextClick, allShifts }) => {
   const { control, watch } = useFormContext();
   const { width } = useWindowDimensions();
-  const [startDate, setStartDate] = useState<any>(null);
+  const [startDate, setStartDate] = useState<Date | null>(null);
   const [times, setTimes] = useState<any>([]);
   const [disabledButton, setDisabledButton] = useState(true);
   const dateAndTime = watch("dateAndTime");
 
-  const filterPassedTime = (time: any) => {
+  const filterPassedTime = (time: Date) => {
     const currentDate = new Date();
     const selectedDate = new Date(time);
     return currentDate.getTime() < selectedDate.getTime();
   };
 
-  const allShift = allShifts?.map((value: any) => new Date(value.dateAndTime));
+  const allShift = allShifts?.map((value: IShift) => new Date(value.dateAndTime));
 
   const allShiftExcludes = allShift.map((value: any) => {
     return setHours(
@@ -48,17 +48,16 @@ export const FirstStep: FC<Props> = ({ onNextClick, allShifts }) => {
     );
   });
 
-  const getExcludeTimesForDate = (date: any) =>
-    allShiftExcludes.filter((time: any) => isSameDay(date, time));
+  const getExcludeTimesForDate = (date: Date | null) =>
+    allShiftExcludes.filter((time: any) => isSameDay(date!!, time));
 
   const handleChangeShift = (date: any) => {
     setTimeToCalendar(date, setTimes, setStartDate);
-    const disabledButton = date.toString().substring(16, 24);
+    const disabledButton = date?.toString().substring(16, 24);
     if (disabledButton !== "00:00:00") {
       setDisabledButton(false);
     }
   };
-
 
 
   return (

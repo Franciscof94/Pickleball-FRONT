@@ -5,6 +5,7 @@ import { useFormContext, Controller } from "react-hook-form";
 import { useAppSelector } from "../../store/hooks";
 import { getShifts } from "../../store/features/shiftsSlice";
 import { setDateReservations } from "../utils/setDate";
+import { IShift } from "../../interfaces";
 
 
 export const YourReservations = () => {
@@ -22,7 +23,7 @@ export const YourReservations = () => {
         className="max-w-[360px] p-2 max-h-[220px] overflow-y-scroll w-full"
         style={{ display: "grid", gap: "1rem" }}
       >
-        {shiftsToCancel?.map((shift: any, index: number) => (
+        {shiftsToCancel?.map((shift: IShift, index: number) => (
           <div
             key={index}
             className={`flex items-center justify-between ${

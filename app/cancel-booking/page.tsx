@@ -29,7 +29,7 @@ const CancelABooking = () => {
             <form className={`${stepNumber === 2 ? "bg-blue" : "bg-dirty-white"}`} onSubmit={methods.handleSubmit(onSubmit)}>
                 <section >
                     <div className="text-3xl font-bold underline text-red-500">
-                        <StepCancelContainer onHandleSubmit={onSubmit} />
+                        <StepCancelContainer  />
                     </div>
                 </section>
             </form>
