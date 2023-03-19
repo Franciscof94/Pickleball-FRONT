@@ -26,7 +26,6 @@ interface Props {
 }
 
 export default function Page({ allShifts }: Props) {
-
   const dispatch = useAppDispatch();
   const { stepNumber } = useAppSelector(selectUi);
   const methods = useForm<IShift>({
@@ -37,9 +36,8 @@ export default function Page({ allShifts }: Props) {
   const onSubmit = async (data: IShift) => {
     try {
       const res = await postShift(data);
-      console.log(data, process.env.NEXT_PUBLIC_API_URL)
 
-      dispatch(setShiftSuccess(true))
+      dispatch(setShiftSuccess(true));
     } catch (error) {
       console.log(error);
     }
@@ -49,11 +47,10 @@ export default function Page({ allShifts }: Props) {
     dispatch(setStepNumber(0));
   }, []);
 
-
   return (
     <FormProvider {...methods}>
       <form
-        className={`${stepNumber === 2  ? "bg-blue" : "bg-dirty-white"}`}
+        className={`${stepNumber === 2 ? "bg-blue" : "bg-dirty-white"}`}
         onSubmit={methods.handleSubmit(onSubmit)}
       >
         <section>
