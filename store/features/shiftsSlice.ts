@@ -30,7 +30,6 @@ export const fetchAllShifts = createAsyncThunk(
   async () => {
     try {
       const { data } = await shiftApi.get("/");
-      console.log(shiftApi)
       return data;
     } catch (err: any) {
       return isRejectedWithValue(err.response.data);

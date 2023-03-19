@@ -37,10 +37,10 @@ export default function Page() {
 
   useEffect(() => {
     dispatch(setStepNumber(0));
-    const promise = dispatch(fetchAllShifts())
+    /* const promise = dispatch(fetchAllShifts())
       return () => {
         promise.abort()
-      }
+      } */
   }, []);
 
   return (
