@@ -91,7 +91,7 @@ export const FirstStep: FC<Props> = ({ onNextClick, allShifts }) => {
             )}
           />
         </div>
-        <div className="mt-2 md:absolute lg:absolute lg:h-18 md:h-18 lg:min-w-[439px] md:min-w-[439px] grid justify-items-center  right-[60px] md:right-[37px] lg:bottom-[-15px] md:bottom-[-15px]">
+        <div className="mt-2 fixed bottom-4 w-full md:absolute lg:absolute lg:h-18 md:h-18 lg:min-w-[439px] md:min-w-[439px] grid justify-items-center  lg:right-[60px] md:right-[37px] lg:bottom-[-15px] md:bottom-[-15px]">
           <div className="hidden lg:block md:block">
             {!disabledButton && (
               <YouChose padding="pb-4">{setDate(dateAndTime)}</YouChose>
