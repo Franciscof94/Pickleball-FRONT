@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { fetchShifts, getShifts } from "../../store/features/shiftsSlice";
+import { fetchShiftByUser, getShifts } from "../../store/features/shiftsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { outfit } from "../page";
 import { CustomButton } from "./buttons/CustomButton";
@@ -23,7 +23,7 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
   const email = watch("email");
 
   const handleClick = async () => {
-    const { payload } = await dispatch(fetchShifts(email));
+    const { payload } = await dispatch(fetchShiftByUser(email));
     setShowAlert(true);
     if (payload?.length) {
       onNextClick();
