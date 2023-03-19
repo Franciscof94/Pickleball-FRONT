@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { selectUi } from "../../store/features/uiSlice"
 import { useAppSelector } from "../../store/hooks"
-import { audiowide } from "../page"
+import { audiowide } from "../home-page"
 import { StepNumber } from "./StepNumber"
 
 interface Props {

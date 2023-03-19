@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC, useEffect, useRef } from "react";
-import { audiowide } from "../page";
+import { audiowide } from "../home-page";
 
 interface Props {
   isOpenMenu: boolean;

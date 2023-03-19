@@ -1,4 +1,4 @@
-import { outfit } from "../page"
+import { outfit } from "../home-page"
 
 export const TextSecondStep = () => {
     return (

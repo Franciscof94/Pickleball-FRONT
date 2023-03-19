@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { audiowide } from "../page"
+import { audiowide } from "../home-page"
 
 interface Props {
     children: React.ReactNode

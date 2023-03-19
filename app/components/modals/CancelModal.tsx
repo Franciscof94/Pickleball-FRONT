@@ -5,7 +5,7 @@ import { FaCalendarTimes } from "react-icons/fa";
 import { setShowModals } from "../../../store/features/modalsSlice";
 import { useAppDispatch } from "../../../store/hooks";
 import { customStyles } from "./CustomStyles";
-import { outfit } from "../../page";
+import { outfit } from "../../home-page";
 import { deleteShift } from "../../../services/DELETE/deleteShift";
 import { setDate } from "../../utils/setDate";
 
