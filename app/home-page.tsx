@@ -37,7 +37,7 @@ export default function Page({ allShifts }: Props) {
   const onSubmit = async (data: IShift) => {
     try {
       const res = await postShift(data);
-      console.log(data, res)
+      console.log(data, process.env.API_URL)
 
       dispatch(setShiftSuccess(true))
     } catch (error) {
