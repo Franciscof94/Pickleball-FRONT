@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { TitleFinish, YourBooking, TextConfirmation, CustomButton } from "./";
 import { Tick } from "../assets";
@@ -7,12 +8,14 @@ import { setDate } from "../utils/setDate";
 import { setStepNumber } from "../../store/features/uiSlice";
 import { useAppDispatch } from "../../store/hooks";
 
+
 interface Props {
   onPrevClick: () => void;
 }
 
 export const ThirdCancelStep: FC<Props> = ({ onPrevClick }) => {
   const { watch, reset } = useFormContext();
+  const router = useRouter()
   const dispatch = useAppDispatch()
 
 
@@ -21,6 +24,7 @@ export const ThirdCancelStep: FC<Props> = ({ onPrevClick }) => {
 
   const handleClick = () => {
     dispatch(setStepNumber(0))
+    router.refresh();
     reset()
   };
 

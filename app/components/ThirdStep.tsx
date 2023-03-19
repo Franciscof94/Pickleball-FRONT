@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 import { useFormContext } from "react-hook-form";
 import { setShiftSuccess } from "../../store/features/shiftsSlice";
@@ -17,13 +18,14 @@ interface Props {
 
 export const ThirdStep: FC<Props> = ({ onPrevClick }) => {
   const { watch, reset } = useFormContext();
+  const router = useRouter()
   const dispatch = useAppDispatch();
 
   const email = watch("email");
   const dateAndTime = watch("dateAndTime");
   const handleClick = () => {
     dispatch(setStepNumber(0));
-    /* dispatch(setShiftSuccess(false)) */
+    router.refresh();
     reset()
   };
 
