@@ -18,22 +18,8 @@ export const Menu = () => {
           Book a lesson
         </Link>
       </li>
-      <li className="mr-6">
-        <Link
-          href="#"
-          className="no-underline text-white hover:text-white text-sm font-medium"
-        >
-          About me
-        </Link>
-      </li>
-      <li className="mr-6">
-        <Link
-          href="#"
-          className="text-white hover:text-white text-sm font-medium"
-        >
-          Blog
-        </Link>
-      </li>
+      <li className="mr-6">About me</li>
+      <li className="mr-6">Blog</li>
       <li className="mr-6">
         <Link
           href="/cancel-booking"
@@ -45,14 +31,7 @@ export const Menu = () => {
           Cancel a booking
         </Link>
       </li>
-      <li>
-        <Link
-          href="#"
-          className="text-white hover:text-white text-sm font-medium"
-        >
-          FAQs
-        </Link>
-      </li>
+      <li>FAQs</li>
     </ul>
   );
 };
