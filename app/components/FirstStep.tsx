@@ -6,6 +6,7 @@ import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import addDays from "date-fns/addDays";
 import isSameDay from "date-fns/isSameDay";
+import moment from "moment";
 import { StepTitle } from "./StepTitle";
 import { YouChose } from "./YouChose";
 import { CustomButton } from "./buttons/CustomButton";
@@ -14,7 +15,7 @@ import useWindowDimensions from "../../hooks/useResize";
 import { setTimeToCalendar } from "../utils/setTime";
 import { setDate } from "../utils/setDate";
 import { IShift } from "../../interfaces";
-import moment from "moment";
+
 
 interface Props {
   onNextClick: () => void;

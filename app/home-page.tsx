@@ -37,7 +37,8 @@ export default function Page({ allShifts }: Props) {
   const onSubmit = async (data: IShift) => {
     try {
       const res = await postShift(data);
-      console.log("FIJARSE ACA", res)
+      console.log(data, res)
+
       dispatch(setShiftSuccess(true))
     } catch (error) {
       console.log(error);
