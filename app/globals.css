@@ -336,11 +336,11 @@ input[type="submit"i]:disabled {
     width: 485px !important;
   }
   .react-datepicker__time {
-    margin-top: 15px !important;
+    margin-top: 5px !important;
   }
 
   .react-datepicker__time-list-item {
-    margin-bottom: 2px !important;
+    margin-bottom: 5px !important;
   }
 
   .react-datepicker__time-container
