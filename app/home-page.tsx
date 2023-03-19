@@ -7,9 +7,8 @@ import { Banner, StepContainer } from "./components";
 import { BookingSchema } from "../validations";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { selectUi, setStepNumber } from "../store/features/uiSlice";
-import { postShift } from "../services/POST/postShift";
 import { IShift } from "../interfaces";
-import { setShiftSuccess } from "../store/features/shiftsSlice";
+import { getShifts, postShifts, setShiftSuccess } from "../store/features/shiftsSlice";
 
 export const audiowide = Audiowide({
   weight: "400",
@@ -27,6 +26,7 @@ interface Props {
 
 export default function Page({ allShifts }: Props) {
   const dispatch = useAppDispatch();
+  
   const { stepNumber } = useAppSelector(selectUi);
   const methods = useForm<IShift>({
     resolver: yupResolver(BookingSchema),
@@ -34,13 +34,10 @@ export default function Page({ allShifts }: Props) {
   });
 
   const onSubmit = async (data: IShift) => {
-    try {
-      const res = await postShift(data);
+    const res = await dispatch(postShifts(data))
+    
 
-      dispatch(setShiftSuccess(true));
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(setShiftSuccess(true));
   };
 
   useEffect(() => {

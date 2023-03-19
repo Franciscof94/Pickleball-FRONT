@@ -6,6 +6,7 @@ import { useAppSelector } from "../../store/hooks";
 import { outfit } from "../home-page";
 import { setDate } from "../utils/setDate";
 import { CustomButton } from "./buttons/CustomButton";
+import { CustombuttonSpinner } from "./buttons/CustomButtonSpinner";
 import { CustomInput } from "./inputs/CustomInput";
 import { StepTitle } from "./StepTitle";
 import { YouChose } from "./YouChose";
@@ -17,12 +18,12 @@ interface Props {
 
 export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
   const { watch } = useFormContext();
-  const { isSuccess } = useAppSelector(getShifts);
-  const { width } = useWindowDimensions()
+  const { isSuccess, status } = useAppSelector(getShifts);
+  const { width } = useWindowDimensions();
   const name = watch("name");
   const lastName = watch("lastName");
   const email = watch("email");
-  const dateAndTime = watch('dateAndTime')
+  const dateAndTime = watch("dateAndTime");
 
   useEffect(() => {
     if (isSuccess) {
@@ -61,20 +62,25 @@ export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
                 label="Email"
                 margin="md:ml-[5px] lg:ml-[5px]"
               />
-              
             </div>
             <div className="flex flex-column items-center mt-[95px]">
-            {width!! < 768 && <YouChose padding="pb-5">{setDate(dateAndTime)}</YouChose>}
-              <CustomButton
-                width="w-[356px]"
-                disabled={
-                  name?.length && lastName?.length && email?.length
-                    ? false
-                    : true
-                }
-              >
-                NEXT
-              </CustomButton>
+              {width!! < 768 && (
+                <YouChose padding="pb-5">{setDate(dateAndTime)}</YouChose>
+              )}
+              {status === "loading" ? (
+                <CustombuttonSpinner />
+              ) : (
+                <CustomButton
+                  width="w-[356px]"
+                  disabled={
+                    name?.length && lastName?.length && email?.length
+                      ? false
+                      : true
+                  }
+                >
+                  NEXT
+                </CustomButton>
+              )}
               <button
                 onClick={onPrevClick}
                 className={`mt-4 text-green font-bold text-xl ${outfit.className}`}

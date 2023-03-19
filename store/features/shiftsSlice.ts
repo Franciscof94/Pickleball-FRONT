@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { shiftApi } from "../../api";
+import { IShift } from "../../interfaces";
 import { RootState } from "../store";
 
 export type ShiftsState = {
-  shiftsToCancel: any;
+  shiftsToCancel: IShift[];
   status: string;
   error: boolean;
   isSuccess: boolean;
@@ -18,9 +19,17 @@ const initialState: ShiftsState = {
 };
 
 export const fetchShifts = createAsyncThunk(
-  "shifts/fetchshifts",
+  "shifts/fetchShifts",
   async (email?: string) => {
     const { data } = await shiftApi.get(`/${email}`);
+    return data;
+  }
+);
+
+export const postShifts = createAsyncThunk(
+  "shifts/postShifts",
+  async (shift: IShift) => {
+    const { data } = await shiftApi.post("/", shift);
     return data;
   }
 );
@@ -44,7 +53,17 @@ export const shiftsSlice = createSlice({
       })
       .addCase(fetchShifts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = true
+        state.error = true;
+      })
+      .addCase(postShifts.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(postShifts.fulfilled, (state, action) => {
+        state.status = "succeeded";
+      })
+      .addCase(postShifts.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = true;
       });
   },
 });
