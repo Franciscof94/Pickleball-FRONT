@@ -63,7 +63,6 @@ export const ThirdStep: FC<Props> = ({ onNextClick }) => {
     /* dispatch(sendCode(email)) */
   };
 
-console.log(statusVerifyCode)
 
   return (
     <div className="min-h-[533px]">
