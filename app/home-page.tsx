@@ -8,7 +8,13 @@ import { BookingSchema } from "../validations";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { selectUi, setStepNumber } from "../store/features/uiSlice";
 import { IShift } from "../interfaces";
-import { fetchAllShifts, getShifts, postShifts, setShiftSuccess } from "../store/features/shiftsSlice";
+import {
+  fetchAllShifts,
+  getShifts,
+  sendCode,
+  setShiftSuccess,
+  verifyCode,
+} from "../store/features/shiftsSlice";
 
 export const audiowide = Audiowide({
   weight: "400",
@@ -22,8 +28,8 @@ export const outfit = Outfit({
 
 export default function Page() {
   const dispatch = useAppDispatch();
-  const { status, allShifts } = useAppSelector(getShifts)
-  
+  const { allShifts } = useAppSelector(getShifts);
+
   const { stepNumber } = useAppSelector(selectUi);
   const methods = useForm<IShift>({
     resolver: yupResolver(BookingSchema),
@@ -31,22 +37,37 @@ export default function Page() {
   });
 
   const onSubmit = async (data: IShift) => {
-    const res = await dispatch(postShifts(data))
-    dispatch(setShiftSuccess(true));
+    const code =
+      data.numberOne +
+      data.numberTwo +
+      data.numberThree +
+      data.numberFour +
+      data.numberFive +
+      data.numberSix;
+
+    const allData = {
+      code,
+      name: data.name,
+      lastName: data.lastName,
+      email: data.email,
+      dateAndTime: data.dateAndTime,
+    };
+    /* dispatch(setShiftToResendCode(allData)); */
+
+    const res = await dispatch(verifyCode(allData))
+    
   };
 
   useEffect(() => {
     dispatch(setStepNumber(0));
-    /* const promise = dispatch(fetchAllShifts())
-      return () => {
-        promise.abort()
-      } */
+    const promise = dispatch(fetchAllShifts());
+   
   }, []);
 
   return (
     <FormProvider {...methods}>
       <form
-        className={`${stepNumber === 2 ? "bg-blue" : "bg-dirty-white"}`}
+        className={`${stepNumber === 3 ? "bg-blue" : "bg-dirty-white"}`}
         onSubmit={methods.handleSubmit(onSubmit)}
       >
         <section>

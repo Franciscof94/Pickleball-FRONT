@@ -10,6 +10,7 @@ export * from "./StepContainer";
 export * from "./FirstStep";
 export * from "./SecondStep";
 export * from "./ThirdStep";
+export * from "./FourStep";
 export * from "./StepTitle";
 export * from "./StepNumber";
 export * from "./YouChose";

@@ -17,7 +17,7 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
   const { watch } = useFormContext();
   const [showAlert, setShowAlert] = useState(false);
   const dispatch = useAppDispatch();
-  const { status, error, shiftsToCancel } = useAppSelector(getShifts);
+  const { statusFetchShiftByUser, error, shiftsToCancel } = useAppSelector(getShifts);
   const name = watch("name");
   const lastName = watch("lastName");
   const email = watch("email");
@@ -42,6 +42,8 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
             <CustomInput
               type="text"
               name="name"
+              padding="p-2"
+              fontSize="text-base"
               placeholder="Name"
               width="w-[312px] md:w-[340px] lg:w-[400px]"
               label="Name"
@@ -50,6 +52,8 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
             <CustomInput
               type="text"
               name="lastName"
+              fontSize="text-base"
+              padding="p-2"
               placeholder="Last name"
               width="w-[312px] md:w-[340px] lg:w-[400px]"
               label="Last name"
@@ -58,6 +62,8 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
             <CustomInput
               type="text"
               name="email"
+              fontSize="text-base"
+              padding="p-2"
               placeholder="Email"
               width="w-[312px] md:w-[340px] lg:w-[400px]"
               label="Email"
@@ -82,7 +88,7 @@ export const FirstCancelStep: FC<Props> = ({ onNextClick }) => {
                 </small>
               )}
             </div>
-            {status === "loading" ? (
+            {statusFetchShiftByUser === "loading" ? (
               <CustombuttonSpinner />
             ) : (
               <CustomButton

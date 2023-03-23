@@ -1,8 +1,8 @@
 import { FC, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import useWindowDimensions from "../../hooks/useResize";
-import { getShifts } from "../../store/features/shiftsSlice";
-import { useAppSelector } from "../../store/hooks";
+import { getShifts, sendCode } from "../../store/features/shiftsSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { outfit } from "../home-page";
 import { setDate } from "../utils/setDate";
 import { CustomButton } from "./buttons/CustomButton";
@@ -18,18 +18,30 @@ interface Props {
 
 export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
   const { watch } = useFormContext();
-  const { isSuccess, status } = useAppSelector(getShifts);
+  const dispatch = useAppDispatch()
+  const { isSuccess, statusSendCode } = useAppSelector(getShifts);
   const { width } = useWindowDimensions();
   const name = watch("name");
   const lastName = watch("lastName");
   const email = watch("email");
   const dateAndTime = watch("dateAndTime");
 
+
+
+
   useEffect(() => {
     if (isSuccess) {
       onNextClick();
     }
   }, [isSuccess]);
+
+  const handleClick =async () => {
+    
+
+      const res = await dispatch(sendCode(email));
+ 
+
+  }
 
   return (
     <section className="max-w-[855px] mx-auto min-h-[533px]">
@@ -41,6 +53,8 @@ export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
               <CustomInput
                 type="text"
                 name="name"
+                padding="p-2"
+                fontSize="text-base"
                 placeholder="Name"
                 width="w-[312px] md:w-[340px] lg:w-[400px]"
                 label="Name"
@@ -49,6 +63,8 @@ export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
               <CustomInput
                 type="text"
                 name="lastName"
+                padding="p-2"
+                fontSize="text-base"
                 placeholder="Last name"
                 width="w-[312px] md:w-[340px] lg:w-[400px]"
                 label="Last name"
@@ -57,6 +73,8 @@ export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
               <CustomInput
                 type="text"
                 name="email"
+                padding="p-2"
+                fontSize="text-base"
                 placeholder="Email"
                 width="w-[312px] md:w-[340px] lg:w-[400px]"
                 label="Email"
@@ -67,11 +85,12 @@ export const SecondStep: FC<Props> = ({ onNextClick, onPrevClick }) => {
               {width!! < 768 && (
                 <YouChose padding="pb-5">{setDate(dateAndTime)}</YouChose>
               )}
-              {status === "loading" ? (
+              {statusSendCode === "loading" ? (
                 <CustombuttonSpinner />
               ) : (
                 <CustomButton
                   width="w-[356px]"
+                  onClick={handleClick}
                   disabled={
                     name?.length && lastName?.length && email?.length
                       ? false

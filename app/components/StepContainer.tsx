@@ -5,11 +5,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import useWindowDimensions from "../../hooks/useResize";
 import { selectUi, setStepNumber } from "../../store/features/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { FirstStep, SecondStep, ThirdStep } from "./";
-import { IShift } from "../../interfaces";
+import { FirstStep, FourStep, SecondStep, ThirdStep } from "./";
+import { IShift, IShiftWithCode } from "../../interfaces";
 
 interface Props {
-  allShifts: IShift[];
+  allShifts: IShiftWithCode[];
 }
 
 export const StepContainer: FC<Props> = ({ allShifts }) => {
@@ -68,7 +68,18 @@ export const StepContainer: FC<Props> = ({ allShifts }) => {
             exit={{ y: -1, opacity: 0 }}
             transition={{ duration: 3.5 }}
           >
-            <ThirdStep onPrevClick={onPrevClick} />
+            <ThirdStep onNextClick={onNextClick} />
+          </motion.div>
+        </Carousel.Item>
+        <Carousel.Item>
+          <motion.div
+            key={stepNumber}
+            initial={{ y: 1, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -1, opacity: 0 }}
+            transition={{ duration: 3.5 }}
+          >
+            <FourStep onPrevClick={onPrevClick} />
           </motion.div>
         </Carousel.Item>
       </Carousel>

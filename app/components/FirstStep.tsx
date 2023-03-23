@@ -14,12 +14,12 @@ import { TextInformation } from "./TextInformation";
 import useWindowDimensions from "../../hooks/useResize";
 import { setTimeToCalendar } from "../utils/setTime";
 import { setDate } from "../utils/setDate";
-import { IShift } from "../../interfaces";
+import { IShift, IShiftWithCode } from "../../interfaces";
 
 
 interface Props {
   onNextClick: () => void;
-  allShifts: IShift[]
+  allShifts: IShiftWithCode[]
 }
 
 export const FirstStep: FC<Props> = ({ onNextClick, allShifts }) => {
@@ -36,7 +36,7 @@ export const FirstStep: FC<Props> = ({ onNextClick, allShifts }) => {
     return currentDate.getTime() < selectedDate.getTime();
   };
 
-  const allShift = allShifts?.map((value: IShift) => new Date(value.dateAndTime));
+  const allShift = allShifts?.map((value: IShiftWithCode) => new Date(value.dateAndTime));
 
   const allShiftExcludes = allShift.map((value: any) => {
     return setHours(
