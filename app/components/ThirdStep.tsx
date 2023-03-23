@@ -151,7 +151,7 @@ export const ThirdStep: FC<Props> = ({ onNextClick }) => {
           <div className="grid justify-items-center pt-12">
             {error && (
               <small
-                className={`text-sm pb-3 lg:text-xl md:text-xl text-error font-bold ${outfit.className}`}
+                className={`text-sm pb-3 px-2 text-center lg:text-xl md:text-xl text-error font-bold ${outfit.className}`}
               >
                 The code does not correspond to the one that was sent to your
                 email.
