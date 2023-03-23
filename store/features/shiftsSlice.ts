@@ -136,6 +136,7 @@ export const shiftsSlice = createSlice({
       })
       .addCase(verifyCode.fulfilled, (state, action) => {
         state.statusVerifyCode = "succeeded";
+        state.error = false
       })
       .addCase(verifyCode.rejected, (state, action) => {
         if (isRejectedWithValue(action.payload)) {
@@ -152,6 +153,7 @@ export const shiftsSlice = createSlice({
       .addCase(sendCode.fulfilled, (state, action) => {
         state.statusSendCode = "succeeded";
         state.isSuccess = true;
+        state.error = false
       })
       .addCase(sendCode.rejected, (state, action) => {
         if (isRejectedWithValue(action.payload)) {
